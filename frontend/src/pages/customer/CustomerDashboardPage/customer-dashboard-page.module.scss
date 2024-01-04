@@ -1,0 +1,72 @@
+.top_container {
+    color: #FFF;
+    font-size: 4vh;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.wrapper {
+    padding: 2em 2em 0 2em;
+}
+
+.main_container {
+    width: 100%;
+    display: flex;
+    padding-top: 2em;
+}
+
+.left_container {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.right_container {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.container {
+    border-radius: 9.778px;
+    background: #FFF;
+    max-height: 15vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.chartContainer {
+	border-radius: 10px;
+	background-color: #ffffff;
+  overflow: hidden;
+  margin-right: 1em;
+  margin-top: 1em;
+}
+
+
+.padding {
+  
+    padding: 0.25em 0.25em 0.25em 0.25em;
+  }
+  
+  
+.render_list > :nth-child(2n-1) > div {
+border-radius: 9.778px;
+display: flex;
+width: 100%;
+flex-direction: column;
+min-width: 20vh;
+height: 100%;
+background-color: #ffffff;
+}
+
+
+.render_list > :nth-child(2n) > div {
+border-radius: 9.778px;
+display: flex;
+width: 100%;
+flex-direction: column;
+min-width: 20vh;
+height: 100%;
+background-color: #d9d8d8;
+}

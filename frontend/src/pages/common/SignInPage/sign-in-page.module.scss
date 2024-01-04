@@ -1,0 +1,39 @@
+/* src/components/pages/landingpage.module.scss */
+
+.signin_page {
+    text-align: center;
+    padding: 20px;
+    color:white;
+    margin-top: 5em;
+    background: url('background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    max-height: 100vh;
+    margin-left: -10px;
+    width: 100%;
+    overflow: auto; /* Enable scrolling for the background image if needed */
+  
+    h1 {
+      font-size: 2em;
+    }
+  
+    p {
+      font-size: 1.2em;
+    }
+  
+    .signupLink {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+  
+      &:hover {
+        background-color: #2980b9;
+      }
+    }
+  }
+  

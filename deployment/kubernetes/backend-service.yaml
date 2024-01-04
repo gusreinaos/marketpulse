@@ -1,0 +1,39 @@
+# Backend Deployment and Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend-container
+        image: registry.git.chalmers.se/courses/dit826/2023/group5/market-pulse/backend/production:v1
+        ports:
+        - containerPort: 8000
+      imagePullSecrets: 
+        - name: app-secret
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  loadBalancerIP: 34.123.41.220
+  selector:
+    app: backend
+  ports:
+  - protocol: "TCP"
+    port: 8000
+    targetPort: 8000
+  type: LoadBalancer
+

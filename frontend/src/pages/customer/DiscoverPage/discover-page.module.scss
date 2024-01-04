@@ -1,0 +1,82 @@
+.page {
+  height: 100vh;
+  margin-left: -10px;
+}
+
+.wrapper {
+  background: url('background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  overflow: auto; /* Enable scrolling for the background image if needed */
+}
+
+.page__container {
+    display: flex;
+    flex-direction: column;
+    width: 50%; /* Adjust the width percentage to your liking */
+    margin: 0 auto; /* Center the container */
+    justify-content: start;
+    align-items: center;
+    margin-top: 20vh;
+  }
+  
+  .page__title {
+    color: #fff;
+    text-align: center;
+    font-size: 27.197px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 0 0 2em 0;
+    width: 100%; /* Make the title full-width */
+  }
+  
+  .searchbar__container {
+    width: 100%; /* Make the search bar container full-width */
+    padding: 1em 0; /* Add some padding if needed */
+  }
+
+  @media screen and (max-width: 768px) {
+    .page__container {
+        width: 80%; /* Adjust the width percentage to your liking */
+      }
+  }
+  
+  .controls_container {
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content:space-evenly;
+    transform: translateY(-50%);
+    margin-top: 1em;
+  }
+
+  .controls {
+    background-color:transparent;
+    color: black;
+    border:0;
+  }
+
+  .company_info_container {
+    display: flex;
+    width: 100%; /* Adjust the width percentage to your liking */
+    margin: 0 auto; /* Center the container */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .company_info_title {
+    color: #fff;
+    font-weight: bold;
+    margin-top: 6em;
+    margin-bottom: 1em;
+  }
+
+  .slide {
+    display: inline-block;
+    max-width: 600px;
+    margin: 1em;
+  }
