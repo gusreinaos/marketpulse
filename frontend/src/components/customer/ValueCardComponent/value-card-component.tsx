@@ -24,6 +24,7 @@ const ValueCardComponent: React.FC<ValueCardProps> = (props) => {
     try {
       setLoading(true)
       const newPrediction = await ModelService.getRefreshedPredictions(companyName!, timestamp)
+      setSentiment(newPrediction.avg_sentiment)
     } catch (error) {
       console.error('Error fetching new prediction', error);
     } finally {
