@@ -48,10 +48,14 @@ const PredictionCardComponent = (props: any) => {
         {props.requestData.prediction && (
           <Col xs={6} sm={6} md={6}>
             <div className={styles.trend_information_container}>
-              <div className={styles.public_sentiment}>
-                <img src={arrowDownSmall} className={styles.arrow_small} />
-                Public sentiment
-              </div>
+              {props.requestData.sentimentVal !== undefined && (
+                <Col xs={6} sm={6} md={6}>
+                  <div className={styles.current_stock}>
+                    <img src={getTrendImage(props.requestData.sentimentVal)} className={styles.arrow_small} alt={props.requestData.sentimentVal >= 0 ? 'Arrow Up' : 'Arrow Down'} />
+                      Average Sentiment
+                  </div>
+                </Col>
+              )}
               {props.requestData.stockTrend !== undefined && (
                 <Col xs={6} sm={6} md={6}>
                   <div className={styles.current_stock}>
