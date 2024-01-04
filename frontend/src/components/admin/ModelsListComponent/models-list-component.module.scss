@@ -1,0 +1,20 @@
+.layer {
+    border-bottom: 1px solid #ddd;
+}
+
+.metrics {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+    color: rgba($color: rgb(38, 66, 85), $alpha: 1.0)
+}
+
+.header {
+    background-color: #59616181;
+}
+
+.selectVersionButton {
+    margin-left: 20px;
+    font-size: 18px;
+}

@@ -1,0 +1,112 @@
+.container {
+    border-radius: 9.778px;
+    background: #FFF;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    min-width: 20vh;
+    padding: 0.5em 0.5em 0em 0.5em;
+    overflow: hidden;
+}
+
+.main_container {
+    color: black !important;
+}
+
+.trend_information_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.trend_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.title_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-self: flex-start;
+    color: black !important;
+
+    color: #000;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.arrow {
+    width: 4vh;
+    display: flex;
+    align-self: flex-start;
+    margin-top: 2.5vh;
+}
+
+.arrow_small {
+    width: 3vh;
+    max-height: 3vh;
+    margin-right: 0.5vw;
+}
+
+.trend_value {
+    font-size: 3vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.trend_value_container {
+    display: flex;
+    padding-left: 1vh;
+}
+
+.public_sentiment {
+    font-size: 1.5vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    text-align: left;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 1vh;
+}
+
+.current_stock {
+    font-size: 1.5vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    text-align: left;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 1vh;
+}
+
+.inflation_rate {
+    font-size: 1.5vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    text-align: left;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 1vh;
+}
+
+.container{
+    height: 100%;
+}

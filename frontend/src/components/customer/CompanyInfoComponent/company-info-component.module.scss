@@ -1,0 +1,40 @@
+.companyInfoContainer {
+    background-color: white;
+    border-radius: 1em;
+    display: flex;
+    height: 15em;
+    overflow: hidden;
+  }
+  
+  .rowContainer {
+    flex: 1;
+  }
+  
+  .text_title {
+    padding-top: 1em;
+    font-weight: bold;
+    font-size: medium;
+  }
+  
+  .text {
+    padding-bottom: 2em;
+    padding-right: 2em;
+    font-size: medium;
+  }
+  
+  .left_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .right_container {
+  }
+  
+  .company_logo {
+    width: 150px; /* Specify the desired width */
+    height: 100px; /* Specify the desired height */
+    object-fit: cover; /* Maintain aspect ratio while covering the specified dimensions */
+  }
+  

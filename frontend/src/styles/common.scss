@@ -1,0 +1,235 @@
+/* stylelint-disable */
+/* Sakura.css v1.4.1
+ * ================
+ * Minimal css theme.
+ * Project: https://github.com/oxalorg/sakura/
+ */
+/* Body */
+html {
+    font-size: 62.5% !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+  }
+  
+  body {
+    font-size: 1.8rem !important;
+    line-height: 1.618 !important;
+    width: 100%;
+    //margin: auto;
+    //color: #4a4a4a;
+    background-color: #252B42 !important;
+    //padding: 13px;
+  }
+  
+  @media (max-width: 684px) {
+    body {
+      font-size: 1.53rem !important;
+    }
+  }
+  @media (max-width: 382px) {
+    body {
+      font-size: 1.35rem !important;
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.1 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+    font-weight: 700 !important;
+    margin-top: 3rem !important;
+    margin-bottom: 1.5rem !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    -ms-word-break: break-all !important;
+    word-break: break-word !important;
+  }
+  
+  h1 {
+    font-size: 2.35em !important;
+  }
+  
+  h2 {
+    font-size: 2em !important;
+  }
+  
+  h3 {
+    font-size: 1.75em !important;
+  }
+  
+  h4 {
+    font-size: 1.5em !important;
+  }
+  
+  h5 {
+    font-size: 1.25em !important;
+  }
+  
+  h6 {
+    font-size: 1em !important;
+  }
+  
+  p {
+    margin-top: 0px !important;
+  }
+  
+  small,
+  sub,
+  sup {
+    font-size: 75% !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: white !important;
+  }
+  a:visited {
+    color: white !important;
+  }
+  
+  ul {
+    padding-left: 1.4em;
+    margin-top: 0px;
+    margin-bottom: 2.5rem;
+  }
+  
+  li {
+    margin-bottom: 0.4em;
+  }
+  
+  blockquote {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 1em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    padding-right: 0.8em;
+    border-left: 5px solid #1d7484;
+    margin-bottom: 2.5rem;
+    background-color: #f1f1f1;
+  }
+  
+  blockquote p {
+    margin-bottom: 0;
+  }
+  
+  img,
+  video {
+    height: auto;
+    max-width: 100%;
+    margin-top: 0px;
+  }
+  
+  /* Pre and Code */
+  pre {
+    background-color: #f1f1f1;
+    display: block;
+    padding: 1em;
+    overflow-x: auto;
+    margin-top: 0px;
+    margin-bottom: 2.5rem;
+    font-size: 0.9em;
+  }
+  
+  code,
+  kbd,
+  samp {
+    font-size: 0.9em;
+    padding: 0 0.5em;
+    background-color: #f1f1f1;
+    white-space: pre-wrap;
+  }
+  
+  pre > code {
+    padding: 0;
+    background-color: transparent;
+    white-space: pre;
+    font-size: 1em;
+  }
+  
+  /* Tables */
+  table {
+    text-align: justify;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  td,
+  th {
+    padding: 0.5em;
+    border-bottom: 1px solid #f1f1f1;
+  }
+  
+  /* Buttons, forms and input */
+  input,
+  textarea {
+    border: 1px solid #4a4a4a;
+  }
+  
+  textarea {
+    width: 100%;
+  }
+  
+  .button,
+  button,
+  input[type="submit"],
+  input[type="reset"],
+  input[type="button"] {
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #f9f9f9;
+    border-radius: 1px;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"][disabled],
+  input[type="reset"][disabled],
+  input[type="button"][disabled] {
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  input[type="submit"]:focus:enabled,
+  input[type="submit"]:hover:enabled,
+  input[type="reset"]:focus:enabled,
+  input[type="reset"]:hover:enabled,
+  input[type="button"]:focus:enabled,
+  input[type="button"]:hover:enabled {
+    background-color: green;
+    border-color: #982c61;
+    color: #f9f9f9;
+    outline: 0;
+  }
+  
+  textarea,
+  select,
+  input {
+    color: #4a4a4a;
+    padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+    border-radius: 4px;
+    box-shadow: none;
+    box-sizing: border-box;
+  }
+  textarea:focus,
+  select:focus,
+  input:focus {
+    outline: 0;
+  }
+  
+  label,
+  legend,
+  fieldset {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  

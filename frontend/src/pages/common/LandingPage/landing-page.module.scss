@@ -1,0 +1,102 @@
+/* src/components/pages/landingpage.module.scss */
+.landing_page {
+  background: url('background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  overflow: auto; 
+}
+
+.page_container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.main_container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.welcome_text {
+  // Welcome to MarketPulse
+  color: white !important;
+  font-size: 40.35;
+  word-wrap: break-word;
+
+}
+
+.introduction {
+  color: white;
+}
+
+.button_container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.button {
+  background-color: #23A6F0;
+  padding: 10px;
+  padding-left: 15px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.arrow {
+  width: 30px;
+  height: auto;
+  margin-bottom: 0;
+  margin-left: 1em;
+}
+
+.page {
+  
+  height: 100vh;
+  margin-left: -10px;
+}
+
+.error_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #f8d7da; // Optional: Add a background color for better visibility
+
+  .sad_face {
+    font-size: 2em; // Adjust the size as needed
+    margin-top: 10px; // Adjust the spacing as needed
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 1000px) {
+  .page_container {
+width: 80%;
+  }
+    
+}
+
+@media screen and (max-width: 768px) {
+  .page_container {
+width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }
+    
+}
