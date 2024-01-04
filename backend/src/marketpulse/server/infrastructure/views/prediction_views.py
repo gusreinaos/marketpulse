@@ -19,8 +19,7 @@ class PredictionView(viewsets.ViewSet):
         if ts != '':
             if cmp!='':
                 try:
-                    print("Hola")
-                    response = CreatePredictionUseCase.create_new_prediction(cmp,ts)
+                    response = CreatePredictionUseCase.create_new_prediction(cmp)
                     return Response(response, status=status.HTTP_200_OK)
                 
                 except Exception as e:

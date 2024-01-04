@@ -24,13 +24,6 @@ const CompanyDashboardPage: React.FC = () => {
 
   const contextValue = useContext(AuthContext);
 
-  console.log("contextValue")
-    console.log(contextValue?.user?.id)
-    
-    console.log("contextValue")
-
-
-
   const companyName = searchParams.get('name');
   const user = contextValue?.user;
 
@@ -52,6 +45,7 @@ const CompanyDashboardPage: React.FC = () => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
   const [stockTrend, setStockTrend] = useState<number | undefined>(undefined);
   const [inflationTrend, setInflationTrend] = useState<number | undefined>(undefined);
+  const [sentimentVal, setSentimentVal] = useState<number>();
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -96,6 +90,7 @@ const CompanyDashboardPage: React.FC = () => {
             predictionRequestData.requestCompany
           );
           setPrediction(predictionResult.prediction_value);
+          setSentimentVal(predictionResult.avg_sentiment);
         } catch (error) {
           console.error('Error fetching prediction:', error);
         }
@@ -147,6 +142,7 @@ const CompanyDashboardPage: React.FC = () => {
     stockTrend: stockTrend,
     inflationTrend: inflationTrend,
     requestTimeStamp: new Date(),
+    sentimentVal: sentimentVal
   };
 
   if (isLoading) {
@@ -177,7 +173,7 @@ const CompanyDashboardPage: React.FC = () => {
                 <PredictionCardComponent requestData={predictionRequestData} />
               </Col>
               <Col xs={12} sm={6} md={6} className={styles.right_card}>
-                <ValueCardComponent prediction={predictionRequestData.prediction} />
+                <ValueCardComponent sentiment={predictionRequestData.sentimentVal} />
               </Col>
             </Row>
             <div className={styles.chartContainer}>
