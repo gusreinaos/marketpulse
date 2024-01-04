@@ -71,3 +71,24 @@
   .infoButton:hover {
     transform: scale(1.2); /* Scale the button on hover */
   }
+
+  .refreshButton {
+    background-color: transparent;
+    border-width: 0px;
+  }
+
+  .greenText {
+    color: green;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 6vh;
+  }
+
+  .redText {
+    color:red;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 6vh;
+  }

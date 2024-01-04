@@ -131,14 +131,23 @@ const ModelService = {
            const response = await axios.get(`${API_BASE_URL}/api/companies`)
             const list = eval(response.data) as CompanyPrediction[];
             
-   
-
             const sorted = SortUtils.sentiment_sort(list)
-
-            
 
             return sorted;
         } catch(error: any){
+            throw error.response.data;
+        }
+    },
+    getRefreshedPredictions: async (requestCompany: string, timeStamp: number) => {
+        try {
+            const response = await axios.get(`${API_BASE_URL}/api/predictions/${requestCompany}`,{
+                params: {
+                    timestamp: timeStamp
+                }
+            })
+            
+            return response.data
+        } catch(error: any) {
             throw error.response.data;
         }
     }
