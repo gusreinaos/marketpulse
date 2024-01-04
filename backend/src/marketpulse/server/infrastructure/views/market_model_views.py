@@ -3,7 +3,7 @@ import tensorflow as tf
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import viewsets
-from ...application.prediction.sentiment_model.train_sentiment_model_use_case import TrainSentimentModelUseCase
+from ...application.prediction.market_model.retrain_market_model_use_case import TrainMarketModelUseCase
 from ...application.prediction.market_model.utils.market_model_utils import MarketModelUtils
 
 import glob, os, json
@@ -50,7 +50,7 @@ class MarketModelView(viewsets.ViewSet):
             print("TRENDTRAINVIEW")
             version = self.kwargs['model_version']
             training_file = request.FILES.get('csv-to-train').read().decode('utf-8')
-            response = TrainSentimentModelUseCase(version, training_file)
+            response = TrainMarketModelUseCase.retrain_model(version, training_file)
 
             return Response({'response': response}, status=status.HTTP_201_CREATED)
         except Exception as e:

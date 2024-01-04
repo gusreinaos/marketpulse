@@ -3,7 +3,7 @@ import { CompanyPrediction } from '../domain/entities/companyPrediction';
 import SortUtils from '../components/customer/sorting_utl'
 
 
-const API_BASE_URL = 'http://34.123.41.220:8000'; 
+const API_BASE_URL = 'http://localhost:8000'; 
 
 const ModelService = {
     getCurrentModelPrediction: async (requestCompany: string) => {

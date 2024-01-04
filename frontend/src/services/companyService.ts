@@ -4,7 +4,7 @@ export interface Company {
     companyCode: string;
 }
 
-const API_BASE_URL = 'http://34.123.41.220:8000'
+const API_BASE_URL = 'http://localhost:8000'
 
 const CompanyService = {
     getCompanyHistory: async (companyCode: string) => {

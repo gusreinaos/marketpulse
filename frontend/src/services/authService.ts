@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { Customer } from '../domain/entities/customer';
 
-const API_BASE_URL = 'http://34.123.41.220:8000';
+const API_BASE_URL = 'http://localhost:8000';
 
 const AuthService = {
   signIn: async (username: string, password: string) => {

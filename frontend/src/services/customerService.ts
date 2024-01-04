@@ -5,7 +5,7 @@ import { CompanyPrediction } from '../domain/entities/companyPrediction';
 
 
 
-const API_BASE_URL = 'http://34.123.41.220:8000'; 
+const API_BASE_URL = 'http://localhost:8000'; 
 
 const CustomerService = {
   createCustomer: async (customerData: Customer) => {

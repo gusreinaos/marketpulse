@@ -1,5 +1,6 @@
 #File for the purpose of running the market trend model 
 import pandas as pd
+from keras.utils import to_categorical
 import numpy as np
 import os, base64, seaborn as sns
 import tensorflow as tf
@@ -78,7 +79,7 @@ class MarketModelUtils:
         x_new_data = np.array(x_new_data)
         x_new_data = x_new_data.reshape(1, 1, len(x_new_data))
 
-        prediction = model.predict(x_new_data).flatten()[0]
+        prediction = np.argmax(model.predict(x_new_data), axis=1)
 
         return prediction, latest_close
 
@@ -93,19 +94,24 @@ class MarketModelUtils:
     def trend_accuracy(self, version):
         model = MarketModelUtils.load_model(version)
         x_train, y_train, x_val, y_val =  MarketModelDataUtils.collect_data("AAPL", "")
+        y_train_categorical = to_categorical(y_train, num_classes=3)
+        y_val_categorical = to_categorical(y_val, num_classes=3)
                         
         # Explainable AI
         # ---------------------------------------
         # Showcases here, by using the AAPL data as an example, how the model came to its decision, and which features influenced its prediction the most
-        explainer = lime_tabular.RecurrentTabularExplainer(x_train, training_labels=y_train, feature_names=['Close', 'GDP', 'Inflation', 'sentiment'], class_names=['-1', '0', '1'], mode='classification')
+        explainer = lime_tabular.RecurrentTabularExplainer(x_train, training_labels=y_train_categorical, feature_names=['Close', 'GDP', 'Inflation', 'sentiment'], class_names=['-1', '0', '1'], mode='classification')
         exp = explainer.explain_instance(x_val[0], model.predict, top_labels=True, num_features=240)
         
         # Saves as an HTML file that can be loaded, and that can be visited by the admin upon request
         exp.save_to_file('server/application/prediction/market_model/trend_explanation.html')
-        diagnostics = model.evaluate(x_val, y_val)
+        diagnostics = model.evaluate(x_val, y_val_categorical)
         predicted_trends = np.argmax(MarketModelUtils.load_model(version).predict(x_val), axis=1)
             
         # Creating a Seaborn heatmap to show how good the model is at predicting the market trend
+        print(predicted_trends)
+        print(y_val)
+        print(y_val_categorical)
         mtrx = confusion_matrix(y_val, predicted_trends)
         sns.heatmap(mtrx, annot=True, fmt=".0f")
         img_path = 'heatmap-mkt.png'
