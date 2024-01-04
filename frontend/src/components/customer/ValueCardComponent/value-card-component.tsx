@@ -57,11 +57,10 @@ const ValueCardComponent: React.FC<ValueCardProps> = (props) => {
               <Tooltip id='tooltip' {...props} className={styles.customTooltip}>
                 <div>
                   <p>
-                    The prediction value ranges from -1 to 1. A value of -1 indicates a more negative or bearish market
-                    prediction, while a value of 1 suggests a more positive or bullish prediction.
+                    The sentiment value ranges from -1 to 1. A value of -1 indicates a more negative outlook, while a value of 1 suggests a more positive outlook.
                   </p>
                   <p>
-                    -1 is considered the lowest prediction, and 1 is considered the highest prediction.
+                    -1 is considered the lowest sentiment, and 1 is considered the highest sentiment.
                   </p>
                 </div>
               </Tooltip>
