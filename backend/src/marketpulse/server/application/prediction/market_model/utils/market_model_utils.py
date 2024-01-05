@@ -109,9 +109,6 @@ class MarketModelUtils:
         predicted_trends = np.argmax(MarketModelUtils.load_model(version).predict(x_val), axis=1)
             
         # Creating a Seaborn heatmap to show how good the model is at predicting the market trend
-        print(predicted_trends)
-        print(y_val)
-        print(y_val_categorical)
         mtrx = confusion_matrix(y_val, predicted_trends)
         sns.heatmap(mtrx, annot=True, fmt=".0f")
         img_path = 'heatmap-mkt.png'

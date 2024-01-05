@@ -4,6 +4,7 @@ import tensorflow as tf
 import numpy as np
 from datetime import datetime
 import matplotlib
+import traceback
 matplotlib.use('Agg')
 from .....infrastructure.repositories.fred_api_repository import *
 from .....infrastructure.repositories.yahoo_api_repository import YahooAPIRepository
@@ -13,6 +14,7 @@ class MarketModelDataUtils:
 
     @classmethod
     def merge_features(self, company_tweet, close_price, inflation, gdp):
+        print()
         close_gdp_data = pd.merge(close_price, gdp, left_index=True, right_index=True, how='inner')
         close_gdp_inflation_data = pd.merge(close_gdp_data, inflation, left_index=True, right_index=True, how='inner')
         close_gdp_inflation_sentiment_data = pd.merge(close_gdp_inflation_data, company_tweet, left_index=True, right_index=True, how='inner')
@@ -49,61 +51,72 @@ class MarketModelDataUtils:
 
     @classmethod
     def collect_data(self, cmp, data_file_path): 
-        start_yf = datetime(2014,12, 31)
-        end_yf = datetime(2020, 12, 31)
+        try:
+            tweets_data, start_date, end_date = get_tweet_sentiments(cmp, data_file_path)
+            start_date_fred = start_date.strftime('%Y-%m-%d')
+            end_date_fred = end_date.strftime('%Y-%m-%d')
+           
+            gdp_data = getGDPData(start_date_fred, end_date_fred)
+            print(gdp_data)
+            # Resample the data to fill in missing dates
+            gdp_data = gdp_data.resample('D').mean()
+            # Interpolate the missing values
+            gdp_data = gdp_data.interpolate()
 
-        start_fred = '2015-01-01'
-        end_fred = '2020-12-31'
+            inf_data = getInflationData(start_date_fred, end_date_fred)
+            # Resample the data to fill in missing dates
+            inf_data = inf_data.resample('D').mean()
+            # Interpolate the missing values
+            inf_data = inf_data.interpolate()
 
-        gdp_data = getGDPData(start_fred, end_fred)
-        # Resample the data to fill in missing dates
-        gdp_data = gdp_data.resample('D').mean()
-        # Interpolate the missing values
-        gdp_data = gdp_data.interpolate()
+            close_data = YahooAPIRepository.get_finance_date(start_date, end_date, cmp)
 
-        inf_data = getInflationData(start_fred, end_fred)
-        # Resample the data to fill in missing dates
-        inf_data = inf_data.resample('D').mean()
-        # Interpolate the missing values
-        inf_data = inf_data.interpolate()
+            all_info = MarketModelDataUtils.merge_features(tweets_data, close_data, inf_data, gdp_data)
+            
+            cols_to_nor = ['Close', 'GDP', 'Inflation Rate', 'sentiment']
+            normalized_data = all_info[cols_to_nor].apply(MarketModelDataUtils.normalize_data)
 
-        tweets_data = get_tweet_sentiments(cmp, data_file_path)
-        close_data = YahooAPIRepository.get_finance_date(start_yf, end_yf, cmp)
+            data = normalized_data.values
 
-        all_info = MarketModelDataUtils.merge_features(tweets_data, close_data, inf_data, gdp_data)
+            #train_data = data[0:int(training_data_len), :]
+
+            data_batchs_x = []
+            data_batchs_y = []
+            for i in range(60, len(data)):
+                data_batchs_x.append(data[i-60:i,])
+                data_batchs_y.append(data[i, 0])
+            
+            data_batchs_x, data_batchs_y = np.array(data_batchs_x), np.array(data_batchs_y)
+
+            permuted_index = np.random.permutation(len(data_batchs_x))
+
+            data_batchs_x = data_batchs_x[permuted_index]
+            data_batchs_y = data_batchs_y[permuted_index]
+
+            
+            x_train = []
+            y_train = []
+
+            training_data_len = int(np.ceil(len(data_batchs_x) * .80))
+
+            for i in range(0, training_data_len):
+                x_train.append(data_batchs_x[i])
+                y_train.append(MarketModelDataUtils.map_to_binary(data_batchs_y[i]))
+
+            x_val = []
+            y_val = []
+            for i in range(training_data_len, len(data_batchs_x)):
+                x_val.append(data_batchs_x[i])
+                y_val.append(MarketModelDataUtils.map_to_binary(data_batchs_y[i]))
+            
+            
+            x_train, y_train = np.array(x_train), np.array(y_train)
+
+            x_val, y_val = np.array(x_val), np.array(y_val)
+
+            return x_train, y_train, x_val, y_val
         
-        cols_to_nor = ['Close', 'GDP', 'Inflation Rate', 'sentiment']
-        normalized_data = all_info[cols_to_nor].apply(MarketModelDataUtils.normalize_data)
-
-        data = normalized_data.values
-
-        training_data_len = int(np.ceil(len(data) * .80))
-
-        train_data = data[0:int(training_data_len), :]
-
-        x_train = []
-        y_train = []
-
-        for i in range(60, len(train_data)):
-            x_train.append(train_data[i-60:i,])
-            y_train.append(train_data[i, 0])
-        
-        x_train, y_train = np.array(x_train), np.array(y_train)
-
-        for i in range(0, len(y_train)):
-            y_train[i] = MarketModelDataUtils.map_to_binary(y_train[i])
-
-        val_data_len = int(np.ceil(len(data))) - training_data_len
-
-        val_data = data[val_data_len: , :]
-
-        x_val = []
-        y_val = []
-
-        for i in range(60, len(train_data)):
-            x_val.append(val_data[i-60:i,])
-            y_val.append(MarketModelDataUtils.map_to_binary(val_data[i, 0]))
-
-        x_val, y_val = np.array(x_val), np.array(y_val)
-
-        return x_train, y_train, x_val, y_val
+        except Exception  as e:
+            print("Running into issues")
+            traceback.print_exc()
+            return e
