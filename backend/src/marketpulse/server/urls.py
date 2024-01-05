@@ -31,12 +31,14 @@ urlpatterns = [
 
     path('auth/login', AuthView.as_view(({'post': 'login_user'}))),
     path("auth/logout", AuthView.as_view({'post':'logout_user'})),
-    path('auth/signup', CustomerView.as_view({'post': 'post'})),
+    path('auth/signup', CustomerView.as_view({'post': 'create'})),
 
     #path('predictions', PredictionView.as_view({'get': 'get_predictions'}), name='predictions'),
     path('predictions/<str:cmp>/', PredictionView.as_view({'get': 'get_prediction'}), name='predictions'),
     path('predictions', PredictionView.as_view({'post': 'create_predictions'}), name = 'predictions'),
 
+    path('customers/<pk>', CustomerView.as_view({'patch': 'partial_update', 'get':'retrieve', 'delete':'destroy', 'put':'update'})),
+    path('customers', CustomerView.as_view({'get':'list'})),
     path('customers', CustomerView.as_view({'post': 'post'}), name='customers'),
     path('customers/<str:cid>/favorites', CustomerView.as_view({'get': 'get_favorites'}), name='customers'),
     path('customers/<str:cid>/favorites/<str:cmp>', CustomerView.as_view({'post': 'post_favorite'}), name='customers'),

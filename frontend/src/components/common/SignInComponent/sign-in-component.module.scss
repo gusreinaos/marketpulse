@@ -32,4 +32,16 @@
 .signin_label::placeholder {
     color: white;
   }
+  
+  .error_message {
+    position: relative; // Use absolute positioning
+    top: 0%; // Position at the top of the container
+    left: 0;
+    right: 0;
+    padding-bottom: 1em;
+    color: #ff6161; // Red color for error visibility, adjust as needed
+    margin-top: 0em; // Margin on top to separate it from the input fields
+    text-align: center; // Center the text
+    font-size: 0.8em; // Adjust font size as needed
+  }
 

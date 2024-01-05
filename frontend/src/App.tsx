@@ -11,6 +11,10 @@ import AdminDashboardPage from './pages/admin/AdminDashboardPage/admin-dashboard
 
 import SignInPage from './pages/common/SignInPage/sign-in-page';
 import { AuthContext, AuthProvider } from './contexts/authContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AboutUsPage from './pages/common/AboutUsPage/aboutus-page';
+import CustomerProfilePage from './pages/customer/CustomerProfilePage/customer-profile-page';
 
 function App() {
 
@@ -28,6 +32,8 @@ function App() {
               <Route path="/customers/:customerId/companies" Component={CompanyDashboardPage} />
               <Route path="/customers/:customerId/dashboard" Component={CustomerDashboardPage}/>
               <Route path="/admins/:adminId/train" Component={AdminDashboardPage}/>
+              <Route path='/customers/:customerId/profile' Component={CustomerProfilePage} />
+              <Route path='/aboutus' Component={AboutUsPage} />
             </Routes>
           </header>
         </div>

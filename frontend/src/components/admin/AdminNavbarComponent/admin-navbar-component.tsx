@@ -29,7 +29,7 @@ const AdminNavbarComponent = ({ adminId }: { adminId?: string }) => {
             {routes.map((route: any) => (
               <a
                 key={route.name}
-                href={route.href.replace(':adminId', adminId || '')}
+                href={route.href.replace(':adminId', authContext?.user?.id || '')}
                 className="navbar__link"
               >
                 {route.name}
@@ -37,7 +37,7 @@ const AdminNavbarComponent = ({ adminId }: { adminId?: string }) => {
             ))}
           </div>
           <div className={styles.user_section}>
-            <a className={styles.login}>Profile page</a>
+             <a href={`/customers/${authContext?.user?.id}/profile`}className={styles.login}>Profile page</a>
             <button className={styles.logout_button} onClick={handleLogout}>
               Log out
               <img className={styles.arrow} src={arrowRight} alt="Arrow right" />

@@ -14,7 +14,7 @@ class AuthView(viewsets.ViewSet):
             return Response({'username': request.user.username,
                               'id' : request.user.id,
                               'email' : request.user.email,
-                              'is_admin' : request.user.is_superuser,
+                              'is_superuser' : request.user.is_superuser,
                               }, status=status.HTTP_200_OK)
         except Exception as e:
             print(f"Unexpected error: {e}")
