@@ -5,6 +5,7 @@ import arrowUpImage from '../../../assets/arrow_up.png';
 import arrowDownImage from '../../../assets/arrow_down.png';
 import arrowUpSmall from '../../../assets/arrow_up_small.png';
 import arrowDownSmall from '../../../assets/arrow_down_small.png';
+import neutral from '../../../assets/neutral.png'
 
 const PredictionCardComponent = (props: any) => {
 
@@ -23,21 +24,28 @@ const PredictionCardComponent = (props: any) => {
         {props.requestData.prediction ? (
           <Col xs={6} sm={6} md={6}>
             <div className={styles.trend_container}>
-              {props.requestData.prediction >= 0 ? (
-                <>
-                  <img src={arrowUpImage} alt="Arrow Up" className={styles.arrow} />
-                  <div className={styles.trend_value_container}>
-                    <p className={styles.trend_value}>Uptrend</p>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <img src={arrowDownImage} alt="Arrow Down" className={styles.arrow} />
-                  <div className={styles.trend_value_container}>
-                    <p className={styles.trend_value}>Downtrend</p>
-                  </div>
-                </>
-              )}
+            {props.requestData.prediction === 0 ? (
+              <>
+                <img src={arrowDownImage} alt="Arrow Down" className={styles.arrow} />
+                <div className={styles.trend_value_container}>
+                  <p className={styles.trend_value}>Downtrend</p>
+                </div>
+              </>
+            ) : props.requestData.prediction === 1 ? (
+              <>
+                <img src={neutral} alt="Neutral Arrow" className={styles.arrow} />
+                <div className={styles.trend_value_container}>
+                  <p className={styles.trend_value}>Neutral</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <img src={arrowUpImage} alt="Arrow Up" className={styles.arrow} />
+                <div className={styles.trend_value_container}>
+                  <p className={styles.trend_value}>Uptrend</p>
+                </div>
+              </>
+            )}
             </div>
           </Col>
         ) : (

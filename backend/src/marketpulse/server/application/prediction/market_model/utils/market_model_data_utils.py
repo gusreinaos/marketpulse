@@ -31,13 +31,13 @@ class MarketModelDataUtils:
         return normalized_data
 
     @classmethod
-    def map_to_binary(self, value, threshold=0.5):
+    def map_to_binary(self, value, threshold=0.25):
         if value < -threshold:
-            return -1
-        elif -threshold <= value <= threshold:
             return 0
-        else:
+        elif -threshold <= value <= threshold:
             return 1
+        else:
+            return 2
         
     @classmethod
     def temp_merge(self, close_price, gdp, inflation):

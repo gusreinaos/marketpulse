@@ -46,7 +46,6 @@ class YahooAPIRepository:
     def get_finance_date(self, start_date, latest_date, company):
         yf.pdr_override()
         stock_data = yf.download(company, start_date, latest_date)
-
         close_price = stock_data['Close']
         close_price_data = pd.DataFrame(close_price)
         close_price_data.rename(columns={"date": "Date"}, inplace=True) 

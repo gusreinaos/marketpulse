@@ -7,7 +7,7 @@ export interface Admin {
     adminPassword: string;
 }
 
-const API_BASE_URL = 'http://34.123.41.220:8000'; 
+const API_BASE_URL = 'http://localhost:8000'; 
 
 export const customerService = {
     createAdmin: async (adminCreds: Admin) => {

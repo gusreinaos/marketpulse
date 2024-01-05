@@ -30,7 +30,7 @@ class GetLatestPredictionUseCase:
     def get_latest_prediction(cls, company):
         unserialized_data = PredictionRepository.get_latest_by_company(company)
 
-        if not unserialized_data:
+        if not unserialized_data or ((datetime.datetime.now().replace(tzinfo=None) - unserialized_data.created_at.replace(tzinfo=None)).days > 1):
             response = CreatePredictionUseCase.create_new_prediction(company)
 
         else:
