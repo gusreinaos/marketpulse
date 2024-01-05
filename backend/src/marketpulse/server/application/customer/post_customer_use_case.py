@@ -17,18 +17,24 @@ def generate_uuid():
 
 class PostCustomerUseCase:
     @classmethod
-    def create_customer(cls, username, email, password):
-        try:   
-            #Creates a new default django user
-            user = CustomUser.objects.create_user(
-                                            username=username,
-                                            password=password,
-                                            email=email
-                                            )
-            response = serializers.serialize('json', [user])
-            if user is not None:
+    def create_customer(self, **request_data):
+        try:
+            username = request_data.get('username')
+            email = request_data.get('email')
+            password = request_data.get('password')
+            serializer = CustomerSerializer(data={'username': username, 'email': email, 'password': password})
+            
+            # Validate the serializer
+            if serializer.is_valid():
+                user = CustomUser.objects.create_user(
+                username=serializer.validated_data.get('username'),
+                    email=serializer.validated_data.get('email'),
+                    password=serializer.validated_data.get('password')
+                )
                 return user
-                
+            else:
+            # Return validation errors
+                raise ValueError(serializer.errors)
         except Exception as e:
-            print(f"Unexpected error: {e}")
-            raise Response({"error": "An unexpected error occurred"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)   
+            print(e)
+        
