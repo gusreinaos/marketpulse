@@ -16,7 +16,7 @@ class Prediction(models.Model):
 
 class TrainSentimentData(models.Model):
     ts_id = models.UUIDField(primary_key=True,default=uuid.uuid4, editable=False, unique=True)
-    unclean = models.CharField(max_length=2000, default='NaN')
+    unclean = models.CharField(max_length=2000, default='NaN', unique=True)
     clean = models.CharField(max_length=2000, default='NaN')
     sentiment = models.IntegerField(validators=[MaxValueValidator(2),MinValueValidator(0)])
     created_at = models.DateTimeField()
@@ -24,7 +24,7 @@ class TrainSentimentData(models.Model):
 
 class ValidSentimentData(models.Model):
     vs_id = models.UUIDField(primary_key=True,default=uuid.uuid4, editable=False, unique=True)
-    unclean = models.CharField(max_length=2000, default='NaN')
+    unclean = models.CharField(max_length=2000, default='NaN', unique=True)
     clean = models.CharField(max_length=2000, default='NaN')
     sentiment = models.IntegerField(validators=[MaxValueValidator(2),MinValueValidator(0)])
     created_at = models.DateTimeField()

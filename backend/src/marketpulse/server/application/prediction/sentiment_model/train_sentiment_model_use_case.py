@@ -16,7 +16,9 @@ from .utils.sentiment_model_utils import SentimentModelUtils
 from ....infrastructure.repositories.train_sentiment_data_repository import TrainSentimentDataRepository
 from ....infrastructure.repositories.valid_sentiment_data_repository import ValidSentimentDataRepository
 from ....models import TrainSentimentData
+from ....models import ValidSentimentData
 from ...serializers.train_sentiment_data_serializer import TrainSentimentDataSerializer
+from ...serializers.valid_sentiment_data_serializer import ValidSentimentDataSerializer
 from sklearn.metrics import confusion_matrix, classification_report
 import matplotlib
 matplotlib.use('Agg')
@@ -42,8 +44,11 @@ class TrainSentimentModelUseCase:
             df_clean = pd.read_csv('new_clean.csv').replace({-1:0})
             
             # A part of the newly submitted data by the admin will go to the train_db, and val_db respectively.
-            # X_train, X_val, y_train, y_val = train_test_split(np.array(df_clean['text']), np.array(df_clean['label']), test_size=0.30, random_state=42)
-
+            df_unclean_train = df[['text', 'label']].iloc[:int(0.7*len(df_clean))]
+            df_unclean_val = df[['text', 'label']].iloc[int(0.7*len(df_clean)):]
+            df_clean_train = df_clean[['text', 'label']].iloc[:int(0.7*len(df_clean))]
+            df_clean_val = df_clean[['text', 'label']].iloc[int(0.7*len(df_clean)):]
+            
             # Convert each row of df to be serialized, to be added to the training db
             for i in range(len(df)):
                 serializer = TrainSentimentDataSerializer(data={
@@ -70,12 +75,37 @@ class TrainSentimentModelUseCase:
 
                 saved_data = TrainSentimentDataRepository.save(new_data)
             
+            for i in range(len(df_unclean_val)):
+                val_serializer = ValidSentimentDataSerializer(data={
+                    'vs_id': '',
+                    'unclean': df_unclean_val['text'].iloc[i],
+                    'clean': df_clean_val['text'].iloc[i],
+                    'sentiment': df_clean_val['label'].iloc[i],
+                    'created_at': datetime.datetime.now()
+                })
+
+                try:
+                    val_serializer.is_valid(raise_exception=True)
+                except serializers.ValidationError as validation_error:
+                    # Handle validation errors and raise them
+                    raise validation_error
+
+                # Transform to a class
+                val_new_data = ValidSentimentData(
+                    unclean=val_serializer.validated_data['unclean'],
+                    clean=val_serializer.validated_data['clean'],
+                    sentiment=val_serializer.validated_data['sentiment'],
+                    created_at=val_serializer.validated_data['created_at']
+                )
+
+                val_saved_data = ValidSentimentDataRepository.save(val_new_data)
+            
             # Get the version of the model to train on top of.
             model = SentimentModelUtils.get_model(version)
 
             # Train model, with passing data from the train + validation database as the val_data.
-            train_df = pd.DataFrame(list(TrainSentimentDataRepository.getCleanRows()), columns=['text', 'label'])
-            val_df = pd.DataFrame(list(ValidSentimentDataRepository.getCleanRows()), columns=['text', 'label'])
+            train_df = pd.DataFrame(list(TrainSentimentDataRepository.getCurrentRows()), columns=['text', 'label'])
+            val_df = pd.DataFrame(list(ValidSentimentDataRepository.getCurrentRows()), columns=['text', 'label'])
             
             # Converting the y-values to one-hot encoded arrays for fitting to the models
             y_hot = tf.keras.utils.to_categorical(train_df['label'], num_classes=3)
@@ -90,9 +120,13 @@ class TrainSentimentModelUseCase:
             # Save a version by incrementing above, from retrieving the highest value of the most recent version saved until now.
             ver_names = glob.glob('server/application/prediction/sentiment_model/versions/**')
             versions = [os.path.basename(file) for file in ver_names]
-            print(versions)
 
-            version_name = f'{int(max(versions)[0])+1}-{today_date.strftime("%Y-%m-%d")}'
+            version_num = int(max(versions)[:2])+1
+            if version_num < 10:
+                version_name = f'0{version_num}-{today_date.strftime("%Y-%m-%d")}'
+            else:
+                version_name = f'{version_num}-{today_date.strftime("%Y-%m-%d")}'
+
             # Save the fitted model as a new model version
             model.save(f'server/application/prediction/sentiment_model/versions/{version_name}/model', save_format='tf')
             return version_name

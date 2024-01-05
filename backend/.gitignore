@@ -16,6 +16,8 @@ inputted_data.csv
 new_unclean.csv
 new_clean.csv
 heatmap*.png
+trend_explanation.html
+sentiment_explanation.html
 
 # Other
 *.log
