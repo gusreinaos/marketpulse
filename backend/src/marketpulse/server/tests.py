@@ -1,4 +1,4 @@
-# Author: Aditya Kadkhikar, John Berntsson
+# Author: Aditya Khadkikar, John Berntsson
 
 from django.test import TestCase
 import unittest

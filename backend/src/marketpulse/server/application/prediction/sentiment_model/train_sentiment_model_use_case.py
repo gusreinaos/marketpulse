@@ -1,4 +1,4 @@
-# Author: Aditya Kadkhikar
+# Author: Aditya Khadkikar
 
 import tensorflow as tf
 import pandas as pd, numpy as np

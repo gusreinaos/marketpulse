@@ -1,4 +1,4 @@
-# Author: Aditya Kadkhikar
+# Author: Aditya Khadkikar
 
 from ...models import TrainSentimentData
 import datetime
