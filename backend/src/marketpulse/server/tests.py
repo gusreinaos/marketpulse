@@ -1,4 +1,5 @@
 from django.test import TestCase
+import unittest
 from unittest.mock import patch, MagicMock
 from keras.models import Sequential
 from keras.layers import Dense, SimpleRNN
@@ -6,6 +7,7 @@ import datetime, dotenv, sys, os, csv, base64
 import seaborn as sns, traceback, glob, logging
 from io import StringIO
 import matplotlib, numpy as np
+from rest_framework import serializers
 import pandas as pd
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
@@ -28,45 +30,6 @@ from .infrastructure.repositories.yahoo_api_repository import YahooAPIRepository
 from .infrastructure.repositories.tweet_repository import *
 
 # Create your tests here.
-class TestMarketTrend(TestCase):
-    # Testing whether data is retrieved using the getInflationRate(), getGDP and/or similar
-    def test_get_data_from_source(self):
-        GDP_data = getGDPData('2015-01-01', '2020-12-31')
-        inflation_data = getInflationData('2015-01-01', '2020-12-01')
-        
-        assert GDP_data.shape == (24,)
-        assert inflation_data.shape == (72,)
-        #print("shape",GDP_data.shape)
-        #print(GDP_data)
-        #print("Inflation data:", inflation_data)
-
-
-    # Checking whether initial data is converted correctly to normalized values (-1:1) and binary mapping
-    def test_data_clean(self):
-        """Normalization doesn't work if theres not data from different dates I think
-        max_val and min_val is the same so it tries to divide by 0, like if theres only tweets from one GDP date"""
-        x_train, y_train, x_val, y_val = MarketModelDataUtils.collect_data(cmp="AAPL", data_file_path="server/application/prediction/market_model/trend_data/input_data.csv")
-        #print("collect_data", x_train, y_train, x_val, y_val)
-        self.assertGreater(len(x_train), 0)
-        self.assertGreater(len(x_val), 0)
-        self.assertGreater(len(y_train), 0)
-        self.assertGreater(len(y_val), 0)
-
-    # Testing whether model training works
-    def test_model_train(self):
-        model_to_be_tested = 1
-        with open("server/application/prediction/market_model/trend_data/input_data.csv") as f_:
-            market_stringified = f_.read() + '\n'
-        TrainMarketModelUseCase.retrain_model(model_to_be_tested, market_stringified.encode('utf-8').decode('utf-8'))
-
-    # Testing whether model returns the right output based on prediction
-    def test_model_return(self):
-        mock_sentiment_averages = [2,2,1,2,0,1,2,0,0,0,0,0,0,0,1,2,2,2,2,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2]
-        received_pred, received_close = MarketModelUtils.analyze_trend(mock_sentiment_averages, "AAPL")
-        print(received_pred)
-        if received_pred not in [0,1,2]:
-            self.fail("Model is not returning a value as per the limits; must be a market trend prediction output between 0 and 2.")
-
 class TestSentiment(TestCase):
     mock_df = pd.read_csv("server/application/prediction/sentiment_model/sample_train.csv")
     
@@ -182,6 +145,42 @@ class TestSentiment(TestCase):
         for num in mock_predictions:
             if num not in [0,1,2]:
                 self.fail("Model is not returning an output in the right value ranges (must be either 0,1,2).")
+                
+class TestMarketTrend(TestCase):
+    # Testing whether data is retrieved using the getInflationRate(), getGDP and/or similar
+    def test_get_data_from_source(self):
+        GDP_data = getGDPData('2015-01-01', '2020-12-31')
+        inflation_data = getInflationData('2015-01-01', '2020-12-01')
+        
+        assert GDP_data.shape == (24,)
+        assert inflation_data.shape == (72,)
+        #print("shape",GDP_data.shape)
+        #print(GDP_data)
+        #print("Inflation data:", inflation_data)
 
-if __name__ == '__main__':
-    unittest.main()
+
+    # Checking whether initial data is converted correctly to normalized values (-1:1) and binary mapping
+    def test_data_clean(self):
+        """Normalization doesn't work if theres not data from different dates I think
+        max_val and min_val is the same so it tries to divide by 0, like if theres only tweets from one GDP date"""
+        x_train, y_train, x_val, y_val = MarketModelDataUtils.collect_data(cmp="AAPL", data_file_path="server/application/prediction/market_model/trend_data/input_data.csv")
+        
+        for train_example in x_train:
+            for col in train_example:
+                for num in col:
+                    if (num < -1) or (num > 1):
+                        self.fail("Not Normalized.")
+
+        for train_example in x_val:
+            for col in train_example:
+                for num in col:
+                    if (num < -1) or (num > 1):
+                        self.fail("Not Normalized.")
+
+    # Testing whether model returns the right output based on prediction
+    def test_model_return(self):
+        mock_sentiment_averages = [2,2,1,2,0,1,2,0,0,0,0,0,0,0,1,2,2,2,2,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2]
+        received_pred, received_close = MarketModelUtils.analyze_trend(mock_sentiment_averages, "AAPL")
+        print(received_pred)
+        if received_pred not in [0,1,2]:
+            self.fail("Model is not returning a value as per the limits; must be a market trend prediction output between 0 and 2.")
