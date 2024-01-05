@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, Col, Overlay, Row, Tooltip } from 'react-bootstrap';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './value-card-component.module.scss';  
@@ -15,10 +15,14 @@ const ValueCardComponent: React.FC<ValueCardProps> = (props) => {
   const searchParams = new URLSearchParams(location.search);
   const companyName = searchParams.get('name');
   const timestamp = Date.now()
-  const [sentiment, setSentiment] = useState(props.sentiment !== undefined ? props.sentiment : 0);
+  const [sentiment, setSentiment] = useState(props.sentiment);
   const [loading, setLoading] = useState(false);
 
   console.log(props);
+
+  useEffect(() => {
+    setSentiment(props.sentiment);
+  }, [props.sentiment]);
 
   const refreshPrediction = async () => {
     try {
@@ -74,7 +78,7 @@ const ValueCardComponent: React.FC<ValueCardProps> = (props) => {
         </Col>
         
         <Col xs={12} sm={12} md={9} className={sentiment >  0 ? styles.greenText : styles.redText}>
-          {loading ? 'Loading...' : sentiment}
+          {loading ? 'Loading...' : sentiment !== undefined ? sentiment.toFixed(4) : 'N/A'}
         </Col>
       </Row>
     </Col>
