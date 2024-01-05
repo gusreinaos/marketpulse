@@ -1,5 +1,6 @@
-from ...models import CustomUser,UserFavoritesCompany
+# Author: John Berntsson
 
+from ...models import CustomUser,UserFavoritesCompany
 
 class CustomerRepository:
     @classmethod

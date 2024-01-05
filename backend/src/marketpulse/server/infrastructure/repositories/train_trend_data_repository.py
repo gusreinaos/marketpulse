@@ -1,3 +1,5 @@
+# Author: Burak Askan
+
 from ...models import TrainTrendData
 import pandas as pd
 

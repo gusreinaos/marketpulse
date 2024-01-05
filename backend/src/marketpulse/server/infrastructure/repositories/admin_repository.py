@@ -1,4 +1,4 @@
-
+# Author: John Berntsson
 
 class AdminRepository:
     @classmethod

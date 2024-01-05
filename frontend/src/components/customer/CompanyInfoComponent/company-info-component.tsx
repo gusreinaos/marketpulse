@@ -1,3 +1,5 @@
+//Author: Michael Larsson
+
 import styles from './company-info-component.module.scss'
 import { Col, Row } from 'react-bootstrap';
 

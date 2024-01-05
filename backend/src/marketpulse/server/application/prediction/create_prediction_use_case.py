@@ -1,3 +1,5 @@
+# Author: Burak Askan, Wojciech Pechmann
+
 from ..serializers.prediction_serializer import *
 import datetime 
 from ...infrastructure.repositories.prediction_repository import PredictionRepository

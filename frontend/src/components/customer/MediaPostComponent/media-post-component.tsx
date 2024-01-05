@@ -1,3 +1,5 @@
+//Author: Michael Larsson
+
 import styles from './media-post-component.module.scss';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';

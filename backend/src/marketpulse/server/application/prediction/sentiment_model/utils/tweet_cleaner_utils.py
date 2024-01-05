@@ -1,3 +1,5 @@
+# Author: Wojciech Pechmann
+
 import re,csv, os
 from django.conf import settings
 import uuid

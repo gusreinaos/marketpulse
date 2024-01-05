@@ -1,3 +1,5 @@
+# Author: Aditya Kadkhikar, Wojciech Pechmann
+
 import numpy as np
 import pandas as pd
 import tensorflow as tf

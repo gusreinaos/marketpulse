@@ -1,3 +1,5 @@
+//Author: Oscar Reina
+
 import { createContext, ReactNode, useState, useEffect, Dispatch, SetStateAction } from "react";
 
 interface AuthContextProps {

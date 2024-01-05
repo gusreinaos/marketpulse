@@ -1,3 +1,5 @@
+# Author: Michael Larsson
+
 from ...infrastructure.repositories.fred_api_repository import *
 import pandas as pd
 

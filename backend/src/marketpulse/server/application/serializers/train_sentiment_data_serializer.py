@@ -1,3 +1,5 @@
+# Author: Aditya Kadkhikar
+
 from rest_framework import serializers
 from server.models import TrainSentimentData
 

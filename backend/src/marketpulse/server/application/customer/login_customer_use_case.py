@@ -1,3 +1,5 @@
+# Author: John Berntsson, Oscar Reina
+
 from django.db import IntegrityError
 from ..serializers.customer_serializer import CustomerSerializer
 from ...infrastructure.repositories.customer_repository import CustomerRepository

@@ -1,3 +1,4 @@
+//Author: Michael Larsson, Wojciech Pechmann, Oscar Reina
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
@@ -129,7 +130,7 @@ const CompanyDashboardPage: React.FC = () => {
     
       setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 10000);
     }
 
   }, [contextValue?.user, companyName, setDynamicChartData, setMessageData])

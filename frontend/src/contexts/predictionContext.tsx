@@ -1,3 +1,4 @@
+//Author: Oscar Reina
 import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { MarketTrendPredictionRequest, MarketTrendPredictionResponse } from "../domain/entities/marketTrendPrediction";
 import ModelService from "../services/modelService";

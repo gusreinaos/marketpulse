@@ -1,3 +1,5 @@
+# Author: Wojciech Pechmann
+
 from rest_framework import serializers
 from server.models import Company
 

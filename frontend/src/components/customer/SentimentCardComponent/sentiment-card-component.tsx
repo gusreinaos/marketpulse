@@ -1,3 +1,5 @@
+//Author: Michael Larsson, Oscar Reina
+
 import { useEffect, useRef, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { MarketTrendPredictionRequest } from "../../../domain/entities/marketTrendPrediction";

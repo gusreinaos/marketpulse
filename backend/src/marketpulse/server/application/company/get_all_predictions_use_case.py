@@ -1,3 +1,5 @@
+# Author: Wojciech Pechmann, Burak Askan
+
 from ...models import Company
 from ...infrastructure.repositories.company_repository import CompanyRepository
 from ...infrastructure.repositories.prediction_repository import PredictionRepository

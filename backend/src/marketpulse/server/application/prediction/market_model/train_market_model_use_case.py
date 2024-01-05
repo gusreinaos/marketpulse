@@ -1,3 +1,5 @@
+# Author: Burak Askan, Michael Larsson
+
 from keras.models import Sequential
 from keras.utils import to_categorical
 from keras.layers import Dense, SimpleRNN

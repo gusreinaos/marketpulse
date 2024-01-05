@@ -1,3 +1,5 @@
+//Author: Wojciech Pechmann
+
 import { Col, Row, Container } from "react-bootstrap";
 import { usePredictionContext } from "../../../contexts/predictionContext";
 import { MarketTrendPredictionRequest } from "../../../domain/entities/marketTrendPrediction";

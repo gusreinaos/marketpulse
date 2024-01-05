@@ -1,3 +1,5 @@
+# Author: Aditya Kadkhikar
+
 from ...models import ValidSentimentData
 import datetime
 

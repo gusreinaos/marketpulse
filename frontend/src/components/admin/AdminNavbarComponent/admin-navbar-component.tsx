@@ -1,3 +1,5 @@
+//Author: Oscar Reina, John Berntsson
+
 import React, { useContext, useState } from 'react';
 import styles from './admin-navbar-component.module.scss';
 import { routes } from './routes';

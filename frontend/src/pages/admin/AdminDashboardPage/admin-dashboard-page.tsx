@@ -1,3 +1,4 @@
+//Author: Aditya Kadkhikar, Burak Askan, Michael Larsson
 import React from 'react';
 import styles from './admin-dashboard-page.module.scss';
 import { ModelsListComponent } from '../../../components/admin/ModelsListComponent/models-list-component';

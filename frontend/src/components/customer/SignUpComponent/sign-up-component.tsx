@@ -1,4 +1,4 @@
-// src/components/customer/SignupComponent.tsx
+//Author: Oscar Reina, John Berntsson
 import React, { useState } from 'react';
 import { Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
