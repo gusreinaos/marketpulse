@@ -1,4 +1,4 @@
-# Author: Aditya Kadkhikar, Wojciech Pechmann
+# Author: Aditya Khadkikar, Wojciech Pechmann
 
 import numpy as np
 import pandas as pd
