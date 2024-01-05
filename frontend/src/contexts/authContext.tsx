@@ -6,8 +6,9 @@ interface AuthContextProps {
 
 interface UserRetrieved {
   id: string;
-  userName: string;
-  userEmail: string;
+  username: string;
+  email: string;
+  is_superuser: boolean;
 }
 
 interface AuthContextValue {

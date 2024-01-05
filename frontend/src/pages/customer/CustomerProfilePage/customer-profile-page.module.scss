@@ -1,0 +1,129 @@
+.page {
+  
+  height: 100vh;
+  margin-left: -10px;
+}
+
+
+
+.wrapper {
+  background: url('background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  overflow: auto; /* Enable scrolling for the background image if needed */
+}
+  .page_title_big {
+    color: #ffffff;
+    font-size: 300;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 0 0 0 0;
+    margin-top: 1em;
+    width: 100%; /* Make the title full-width */
+  }
+  .page__title {
+    color: #000;
+    font-size: 20;
+    font-style: normal;
+    font-weight: 700;
+    text-align: left;
+    line-height: normal;
+    text-overflow: ellipsis;
+    padding: 0 0 0 0;
+    margin-top: 1em;
+    width: 100%; /* Make the title full-width */
+  }
+
+  .page__container {
+    display: flex;
+    flex-direction: row; // Changed to column for vertical stacking
+    align-items: stretch; // This will center-align items horizontally
+    justify-content: flex-start; // This will align items to the start of the flex container vertically
+    width: fit-content;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0em; // Add padding as needed
+    background-color: #E6E9EE;
+    border-radius: 9.778px;
+    max-width: fit-content;
+    max-height: fit-content;
+    //width: 50%; // Adjust the width percentage to your liking
+    margin: 0 auto; // Center the container horizontally
+    margin-top: 10vh; // Distance from the top of the viewport
+  }
+  .verticalLine {
+    margin: 0.25em;
+    margin-right: 1em;
+    width: 1px; // Width of the line
+    background-color: #0000004f; // Color of the line
+}
+  .form_container {
+    max-width: 40 vh;  /* You may adjust this value */
+    margin: 0 auto;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 2em;
+}
+.row_container{
+  align-items: center;
+  
+}
+.info_container {
+  max-width: 50vh;  /* You may adjust this value */
+  margin: 0 auto;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.info_label {
+  color: rgb(0, 0, 0);
+  border-radius: 9.778px;
+  border: 1px solid #0000004f;
+  background: rgba(0, 0, 0, 0.05);
+  width: 100%;  /* Set width to 100% */
+  margin-bottom: 1em;
+}
+.info_label::placeholder {
+  color: rgba(42, 42, 42, 0.394); // Replace 'grey' with the color you prefer
+  opacity: 1; // To ensure the color is not faded
+}
+.button {
+  border-radius: 9.778px;
+  background: radial-gradient(2640.68% 277.52% at 114.84% 369.84%, #D9D9D9 6.77%, rgba(26, 133, 193, 0.94) 50%);
+  //max-height: 10vh;
+ // max-width: 40vh;  /* You may adjust this value */
+  width: auto;
+  height: auto;
+  text-align: center;
+  border: none;
+  color: white;
+  margin-top: 0;
+  border: 1px solid #0000004f;
+  padding-bottom: 0;
+  
+}
+.user_data {
+  font-weight: normal;
+
+}
+.error_message {
+  position: relative; // Use absolute positioning
+  top: 0%; // Position at the top of the container
+  left: 0;
+  right: 0;
+  padding-bottom: 1em;
+  color: #ff6161; // Red color for error visibility, adjust as needed
+  margin-top: 0em; // Margin on top to separate it from the input fields
+  text-align: center; // Center the text
+  font-size: 0.8em; // Adjust font size as needed
+}

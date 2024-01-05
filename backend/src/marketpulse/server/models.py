@@ -44,6 +44,7 @@ class Company(models.Model):
 
 class CustomUser(AbstractUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    email = models.EmailField(unique=True, blank=False)
 
 class UserFavoritesCompany(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
