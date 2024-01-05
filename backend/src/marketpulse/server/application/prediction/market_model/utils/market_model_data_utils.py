@@ -1,3 +1,5 @@
+# Author: Michael Larsson, Burak Askan
+
 from keras.models import Sequential
 from keras.layers import Dense, SimpleRNN
 import tensorflow as tf

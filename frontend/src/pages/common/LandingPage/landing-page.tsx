@@ -1,3 +1,4 @@
+//Author: Oscar Reina, John Berntsson
 import React from 'react';
 import NavbarComponent from '../../../components/common/NavBarComponent/navbar-component';
 import styles from './landing-page.module.scss';

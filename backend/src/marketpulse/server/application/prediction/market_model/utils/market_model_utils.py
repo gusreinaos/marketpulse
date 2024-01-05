@@ -1,3 +1,5 @@
+# Author: Micahel Larsson, Burak Askan
+
 #File for the purpose of running the market trend model 
 import pandas as pd
 from keras.utils import to_categorical

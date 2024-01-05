@@ -1,3 +1,5 @@
+# Author: Wojciech Pechmann, Michael Larsson
+
 from ...models import Company
 
 class CompanyRepository:

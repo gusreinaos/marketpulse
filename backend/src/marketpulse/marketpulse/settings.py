@@ -54,7 +54,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
-ALLOWED_HOSTS = ['34.123.41.220', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['34.122.134.118', 'localhost', '127.0.0.1']
 
 ROOT_URLCONF = "marketpulse.urls"
 

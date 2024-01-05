@@ -1,3 +1,4 @@
+//Author: Oscar Reina
 export interface MarketTrendPredictionRequest {
     requestTimeStamp: Date;
     requestCompany: string;

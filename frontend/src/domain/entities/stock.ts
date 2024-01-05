@@ -1,3 +1,4 @@
+//Author: Oscar Reina
 export interface StockRequest {
     requestCompany: string;
 }

@@ -1,3 +1,4 @@
+//Author: Burak Askan, Wojciech Pechmann
 import {CompanyPrediction} from  '../../domain/entities/companyPrediction'
 
 class SortUtils {

@@ -1,3 +1,5 @@
+# Author: everyone
+
 from django.urls import path
 from .infrastructure.views.customer_views import CustomerView
 from .infrastructure.views.admin_views import AdminView

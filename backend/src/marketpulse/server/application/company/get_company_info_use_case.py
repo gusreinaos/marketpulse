@@ -1,3 +1,5 @@
+# Author: Michael Larsson
+
 from ...infrastructure.repositories.company_repository import CompanyRepository
 from ...application.serializers.company_serializer import CompanySerializer, CompanyListSerializer
 import pandas as pd

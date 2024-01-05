@@ -1,3 +1,5 @@
+# Author: Wojciech Pechmann
+
 from ...models import CustomUser,UserFavoritesCompany
 from ...infrastructure.repositories.customer_repository import CustomerRepository
 from ...infrastructure.repositories.company_repository import CompanyRepository

@@ -1,3 +1,5 @@
+# Author: Wojciech Pechmann
+
 from ...models import Prediction
 from django.db.models.aggregates import Max
 from rest_framework import serializers

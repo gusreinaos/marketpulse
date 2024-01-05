@@ -1,10 +1,11 @@
+//Author: Michael Larsson
 import axios from 'axios'
 
 export interface Company {
     companyCode: string;
 }
 
-const API_BASE_URL = 'http://localhost:8000'
+const API_BASE_URL = 'http://34.122.134.118:8000'
 
 const CompanyService = {
     getCompanyHistory: async (companyCode: string) => {

@@ -1,3 +1,5 @@
+# Author: John Berntsson, Oscar Reina
+
 from ...models import Customer
 from ...infrastructure.repositories.customer_repository import CustomerRepository
 import uuid

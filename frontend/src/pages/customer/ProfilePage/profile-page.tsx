@@ -1,3 +1,4 @@
+//Author: John Berntsson
 import React from 'react';
 import { Container, Row, Col, Card, Button, InputGroup, FormControl, ProgressBar } from 'react-bootstrap';
 

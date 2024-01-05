@@ -1,3 +1,5 @@
+# Author: Michael Larsson
+
 from ...infrastructure.repositories.stocktwit_api_repository import StocktwitApiRepository
 from datetime import datetime
 

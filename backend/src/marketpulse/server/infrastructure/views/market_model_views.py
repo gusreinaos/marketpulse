@@ -1,3 +1,5 @@
+# Author: Burak Askan, Oscar Reina
+
 from django.db import IntegrityError
 import tensorflow as tf
 from rest_framework import status

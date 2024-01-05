@@ -1,3 +1,6 @@
+# Author: John Berntsson, Oscar Reina
+
+
 from rest_framework.response import Response
 from django.contrib.auth import authenticate, login
 from rest_framework import status

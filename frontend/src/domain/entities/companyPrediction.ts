@@ -1,3 +1,4 @@
+//Author: Oscar Reina, Burak Askan
 export interface CompanyPrediction {
     company_code: string;
     company_name: string;

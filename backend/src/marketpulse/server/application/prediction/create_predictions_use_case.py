@@ -1,3 +1,5 @@
+# Author: Burak Askan, Wojciech Pechmann
+
 from ...models import Prediction 
 from ...infrastructure.repositories.stocktwit_api_repository import StocktwitApiRepository
 from ...infrastructure.repositories.company_repository import CompanyRepository

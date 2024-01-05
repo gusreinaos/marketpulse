@@ -1,3 +1,5 @@
+# Author: Micahel Larsson, Burak Askan
+
 import pandas as pd
 from .....models import TrainTrendData
 from .....infrastructure.repositories.train_trend_data_repository import TrainTrendDataRepository

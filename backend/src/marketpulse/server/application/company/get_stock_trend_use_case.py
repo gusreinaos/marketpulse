@@ -1,3 +1,5 @@
+# Author: Michael Larsson
+
 from ...infrastructure.repositories.yahoo_api_repository import YahooAPIRepository
 import pandas as pd
 

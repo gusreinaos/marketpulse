@@ -1,3 +1,5 @@
+# Author: Michael Larsson, Burak Askan
+
 import yfinance as yf
 from datetime import datetime, timedelta
 import pandas as pd

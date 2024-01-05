@@ -1,3 +1,5 @@
+# Author: John Berntsson, Wojciech Pechmann
+
 import requests
 import json
 import time

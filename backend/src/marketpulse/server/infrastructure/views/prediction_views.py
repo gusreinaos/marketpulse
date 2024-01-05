@@ -1,3 +1,5 @@
+# Author: Wojciech Pechmann, Oscar Reina
+
 from ...application.prediction.get_latest_prediction_use_case import GetLatestPredictionUseCase
 from ...application.prediction.create_prediction_use_case import CreatePredictionUseCase
 from ...application.prediction.create_predictions_use_case import CreatePredictionsUseCase

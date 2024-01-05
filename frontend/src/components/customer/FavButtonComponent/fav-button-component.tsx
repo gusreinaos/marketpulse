@@ -1,3 +1,5 @@
+//Author: Wojciech Pechmann
+
 import styles from './fav-button-component.module.scss';
 import { Button } from 'react-bootstrap';
 import customerService from '../../../services/customerService';

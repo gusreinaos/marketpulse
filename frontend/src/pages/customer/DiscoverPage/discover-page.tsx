@@ -1,3 +1,4 @@
+//Author: Oscar Reina, Michael Larsson
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import CustomerNavbarComponent from '../../../components/customer/CustomerNavBarComponent/customer-navbar-component';

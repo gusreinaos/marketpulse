@@ -1,3 +1,4 @@
+//Author: Oscar Reina, John Berntsson
 import axios from 'axios';
 
 export interface Admin {
@@ -7,7 +8,7 @@ export interface Admin {
     adminPassword: string;
 }
 
-const API_BASE_URL = 'http://localhost:8000'; 
+const API_BASE_URL = 'http://34.122.134.118:8000'; 
 
 export const customerService = {
     createAdmin: async (adminCreds: Admin) => {

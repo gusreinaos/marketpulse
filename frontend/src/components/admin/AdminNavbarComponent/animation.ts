@@ -1,3 +1,4 @@
+//Author: Oscar Reina
 import { useState } from 'react';
 
 export const useHamburger = () => {

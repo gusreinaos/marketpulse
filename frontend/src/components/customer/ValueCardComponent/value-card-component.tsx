@@ -1,3 +1,4 @@
+//Author: Michael Larsson
 import React, { useEffect, useRef, useState } from 'react';
 import { Button, Col, Overlay, Row, Tooltip } from 'react-bootstrap';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';

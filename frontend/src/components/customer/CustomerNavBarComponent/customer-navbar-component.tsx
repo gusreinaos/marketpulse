@@ -1,3 +1,5 @@
+//Author: Oscar Reina, Wojciech Pechmann
+
 import React, { useContext, useState } from 'react';
 import styles from './customer-navbar-component.module.scss';
 import { routes } from './routes';

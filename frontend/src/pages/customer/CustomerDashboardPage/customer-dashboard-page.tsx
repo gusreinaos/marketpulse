@@ -1,3 +1,4 @@
+//Author: Wojciech Pechmann
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';

@@ -1,3 +1,5 @@
+# Author: Wojciech Pechmann, Burak Askan
+
 from ...models import CustomUser
 from ...infrastructure.repositories.customer_repository import CustomerRepository
 from ...infrastructure.repositories.prediction_repository import PredictionRepository

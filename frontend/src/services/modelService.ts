@@ -1,9 +1,10 @@
+//Author: Aditya Khadkikar, Wojciech Pechmann
 import axios from 'axios';
 import { CompanyPrediction } from '../domain/entities/companyPrediction';
 import SortUtils from '../components/customer/sorting_utl'
 
 
-const API_BASE_URL = 'http://localhost:8000'; 
+const API_BASE_URL = 'http://34.122.134.118:8000'; 
 
 const ModelService = {
     getCurrentModelPrediction: async (requestCompany: string) => {

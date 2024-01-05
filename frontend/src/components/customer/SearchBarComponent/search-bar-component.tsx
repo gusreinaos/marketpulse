@@ -1,3 +1,4 @@
+//Author: Oscar Reina
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './search-bar-component.module.scss';

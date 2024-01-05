@@ -1,3 +1,5 @@
+# Author: Burak Askan
+
 import pandas as pd
 from ..repositories.train_trend_data_repository import TrainTrendDataRepository
 
