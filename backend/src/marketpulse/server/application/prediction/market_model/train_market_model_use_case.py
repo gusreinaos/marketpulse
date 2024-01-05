@@ -54,10 +54,6 @@ class TrainMarketModelUseCase:
 
         y_train_categorical = to_categorical(y_train, num_classes=3)
         y_val_categorical = to_categorical(y_val, num_classes=3)
-
-        print(lens)
-        print(len(x_train))
-        print(len(y_train))
         model_log = model.fit(x_train, y_train_categorical, epochs=1, validation_data=(x_val, y_val_categorical), batch_size=1)
         
         today_date = datetime.now()
