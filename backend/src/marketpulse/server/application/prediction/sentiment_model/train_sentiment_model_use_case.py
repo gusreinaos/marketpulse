@@ -90,9 +90,13 @@ class TrainSentimentModelUseCase:
             # Save a version by incrementing above, from retrieving the highest value of the most recent version saved until now.
             ver_names = glob.glob('server/application/prediction/sentiment_model/versions/**')
             versions = [os.path.basename(file) for file in ver_names]
-            print(versions)
 
-            version_name = f'{int(max(versions)[0])+1}-{today_date.strftime("%Y-%m-%d")}'
+            version_num = int(max(versions)[:2])+1
+            if version_num < 10:
+                version_name = f'0{version_num}-{today_date.strftime("%Y-%m-%d")}'
+            else:
+                version_name = f'{version_num}-{today_date.strftime("%Y-%m-%d")}'
+
             # Save the fitted model as a new model version
             model.save(f'server/application/prediction/sentiment_model/versions/{version_name}/model', save_format='tf')
             return version_name
